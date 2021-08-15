@@ -1,0 +1,473 @@
+            <Key>WriteRateThreshold</Key>
+                        <Description>The minimum acceptable write transfer rate, specified in MB/s.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>100.000000</Value>
+                    </Parameter>
+                    <Parameter name="Allow Write Without Encryption Detection" type="BOOLEAN">
+                        <Key>AllowWriteWithoutEncryptionDetection</Key>
+                        <Description>Allow the test to write to the drive even if the encryption status cannot be detected.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>false</Value>
+                    </Parameter>
+                    <Parameter name="Prompt User For Media" type="BOOLEAN">
+                        <Key>PromptUserForMedia</Key>
+                        <Description>If true, the test will prompt the user to insert test media if it fails to detect it.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>true</Value>
+                    </Parameter>
+                    <Parameter name="Start Range" type="STRING">
+                        <Key>StartRange</Key>
+                        <Description>Specifies the test starting sector. Acceptable values are MIN (starting sector), sector number (any valid sector) and percent (1%).</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>MIN</Value>
+                    </Parameter>
+                    <Parameter name="Recovered Errors" type="BOOLEAN">
+                        <Key>DisplayRecoveredErrs</Key>
+                        <Description>Display information about any errors which were recovered from during testing.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>true</Value>
+                    </Parameter>
+                    <Parameter name="End Range" type="STRING">
+                        <Key>EndRange</Key>
+                        <Description>Specifies the test ending sector. Acceptable values are MAX (Last testable sector), sector number (any valid sector greater than StartRange), percent (any valid % greater than StartRange).</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>16GB</Value>
+                    </Parameter>
+                    <Parameter name="Do Not Eject" type="BOOLEAN">
+                        <Key>DoNotEject</Key>
+                        <Description>If true, specifies that the removable media should not be ejected during the test. If the drive does not use removable media, this parameter has no effect.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>true</Value>
+                    </Parameter>
+                    <Parameter name="Write End Range" type="STRING">
+                        <Key>WriteEndRange</Key>
+                        <Description>Specifies the test ending sector. Acceptable values are MAX (Last testable sector), sector number (any valid sector greater than StartRange), percent (any valid % greater than StartRange).</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>1GB</Value>
+                    </Parameter>
+                    <Parameter name="Detailed errors" type="BOOLEAN">
+                        <Key>DisplayAdvancedErrs</Key>
+                        <Description>Display detailed error information if it is available for any errors that occur.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>false</Value>
+                    </Parameter>
+                    <Parameter name="Check Removable Media Bit" type="BOOLEAN">
+                        <Key>WarnRMB</Key>
+                        <Description>This parameter toggles whether the Removable Media Bit (RMB) is checked for consistency when the device being tested reports NO MEDIA.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>false</Value>
+                    </Parameter>
+                    <Parameter name="Retry Count" type="UINT32">
+                        <Key>RetryCount</Key>
+                        <Description>Indicates the number of retries that should be attempted before an error is reported.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>1</Value>
+                    </Parameter>
+                    <Parameter name="Warn on below threshold" type="BOOLEAN">
+                        <Key>WarnOnBelowThreshold</Key>
+                        <Description>Dictates whether we return a fail or warning result when the calculated speed is less than the threshold. When set to true it will return warning and fail otherwise.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>true</Value>
+                    </Parameter>
+                </Test>
+                <Test name="Wear Level Test" enabled="true" index="266">
+                    <Description>This test examines the Solid State Drive (SSD) statistics endurance indicator. This value, if available, will indicate the remaining lifetime of the SSD.</Description>
+                    <GUID>pcdrssd_SSDWearLevelTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">SSD</SupportedCapability>
+                    <SupportedCapability icon="hard_drive">ATA</SupportedCapability>
+                    <FriendlyGUID>SSD SSDWearLevelTest</FriendlyGUID>
+                    <Parameter name="Life Expectancy Threshold" type="UINT32">
+                        <Key>LifeExpectancyThreshold</Key>
+                        <Description>Specifies a threshold to indicate that a Solid State Drive is close enough to its end of life to warrant further inspection. This should be a value between 0 and 100 inclusive, where 0 is indicative of a new drive and 100 is the manufacturer&apos;s expected end of life indicator value.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>90</Value>
+                    </Parameter>
+                </Test>
+                <Test name="NVMe Wear Level Test" enabled="true" index="267">
+                    <Description>This test examines the Solid State Drive (SSD) statistics endurance indicator. This value, if available, will indicate the remaining lifetime of the SSD.</Description>
+                    <GUID>pcdrssd_NVMeWearLevelTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">NVME</SupportedCapability>
+                    <FriendlyGUID>SSD NVMeWearLevelTest</FriendlyGUID>
+                    <Parameter name="Life Expectancy Threshold" type="UINT32">
+                        <Key>LifeExpectancyThreshold</Key>
+                        <Description>Specifies a threshold to indicate that a Solid State Drive is close enough to its end of life to warrant further inspection. This should be a value between 0 and 100 inclusive, where 0 is indicative of a new drive and 100 is the manufacturer&apos;s expected end of life indicator value.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>90</Value>
+                    </Parameter>
+                </Test>
+                <Test name="SMART Wear Level Test" enabled="true" index="268">
+                    <Description>This test examines the Solid State Drive (SSD) statistics endurance indicator. This value, if available, will indicate the remaining lifetime of the SSD.</Description>
+                    <GUID>pcdrssd_IntelSSDWearLevelTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">SSD</SupportedCapability>
+                    <SupportedCapability icon="hard_drive">ATA</SupportedCapability>
+                    <FriendlyGUID>SSD IntelSSDWearLevelTest</FriendlyGUID>
+                    <Parameter name="Life Expectancy Threshold" type="UINT32">
+                        <Key>LifeExpectancyThreshold</Key>
+                        <Description>Specifies a threshold to indicate that a Solid State Drive is close enough to its end of life to warrant further inspection. This should be a value between 0 and 100 inclusive, where 0 is indicative of a new drive and 100 is the manufacturer&apos;s expected end of life indicator value.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>89</Value>
+                    </Parameter>
+                </Test>
+                <Test name="NVMe Status Test" enabled="true" index="269">
+                    <Description>Checks the status of drives that support the NVMe SMART log to determine if failure is imminent.</Description>
+                    <GUID>pcdrssd_NVMeStatusTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">NVME</SupportedCapability>
+                    <FriendlyGUID>SSD NVMeStatusTest</FriendlyGUID>
+                </Test>
+                <Test name="NVDIMM Status Test" enabled="false" index="270">
+                    <Description>Checks the status of NVDIMM drives to determine if failure is imminent.</Description>
+                    <GUID>pcdrssd_NVDIMMStatusTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">NVDIMM</SupportedCapability>
+                    <FriendlyGUID>SSD NVDIMMStatusTest</FriendlyGUID>
+                </Test>
+                <Test name="SCSI Wear Level Test" enabled="true" index="271">
+                    <Description>This test examines the Solid State Drive (SSD) statistics endurance indicator. This value, if available, will indicate the remaining lifetime of the SSD.</Description>
+                    <GUID>pcdrssd_SCSIWearLevelTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">SSD</SupportedCapability>
+                    <SupportedCapability icon="scsi">SCSISBC</SupportedCapability>
+                    <FriendlyGUID>SSD SCSIWearLevelTest</FriendlyGUID>
+                    <Parameter name="Life Expectancy Threshold" type="UINT32">
+                        <Key>LifeExpectancyThreshold</Key>
+                        <Description>Specifies a threshold to indicate that a Solid State Drive is close enough to its end of life to warrant further inspection. This should be a value between 0 and 100 inclusive, where 0 is indicative of a new drive and 100 is the manufacturer&apos;s expected end of life indicator value.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>90</Value>
+                    </Parameter>
+                </Test>
+                <Test name="MMC Wear Level Test" enabled="false" index="272">
+                    <Description>This test examines the Solid State Drive (SSD) statistics endurance indicator. This value, if available, will indicate the remaining lifetime of the SSD.</Description>
+                    <GUID>pcdrssd_MMCWearLevelTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">SSD</SupportedCapability>
+                    <SupportedCapability icon="memory">MMCSDFlash</SupportedCapability>
+                    <FriendlyGUID>SSD MMCWearLevelTest</FriendlyGUID>
+                    <Parameter name="Life Expectancy Threshold" type="UINT32">
+                        <Key>LifeExpectancyThreshold</Key>
+                        <Description>Specifies a threshold to indicate that a Solid State Drive is close enough to its end of life to warrant further inspection. This should be a value between 0 and 100 inclusive, where 0 is indicative of a new drive and 100 is the manufacturer&apos;s expected end of life indicator value.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>90</Value>
+                    </Parameter>
+                </Test>
+                <Test name="NVMe Short Self Test" enabled="true" index="273">
+                    <Description>Runs a built-in self test on the device, which will last less than 2 minutes.  The device will remain operational while the test executes.</Description>
+                    <GUID>pcdrssd_NVMeShortSelfTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">NVME</SupportedCapability>
+                    <FriendlyGUID>SSD NVMeShortSelfTest</FriendlyGUID>
+                    <Parameter name="Timeout Factor" type="UINT32">
+                        <Key>TimeoutFactor</Key>
+                        <Description>The test continuously monitors NVMe capable drives to determine when the self-test routine will complete. If the estimated time takes longer than TimeOutFactor * NVMe self-test estimate,the test will time-out.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>6</Value>
+                    </Parameter>
+                </Test>
+                <Test name="NVMe Extended Self Test" enabled="false" index="274">
+                    <Description>Runs a built-in self test on the device, which may take longer than 2 minutes.  The device will remain operational while the test executes.</Description>
+                    <GUID>pcdrssd_NVMeExtendedSelfTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">NVME</SupportedCapability>
+                    <FriendlyGUID>SSD NVMeExtendedSelfTest</FriendlyGUID>
+                    <Parameter name="Timeout Factor" type="UINT32">
+                        <Key>TimeoutFactor</Key>
+                        <Description>The test continuously monitors NVMe capable drives to determine when the self-test routine will complete. If the estimated time takes longer than TimeOutFactor * NVMe self-test estimate,the test will time-out.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>6</Value>
+                    </Parameter>
+                </Test>
+                <Test name="Optane Status Test" enabled="true" index="275">
+                    <Description>Verify that the existing Optane devices are configured as valid.</Description>
+                    <GUID>pcdrssd_OptaneStatusTest</GUID>
+                    <ModuleGUID>pcdrssd</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="hard_drive">NVME</SupportedCapability>
+                    <FriendlyGUID>SSD OptaneStatusTest</FriendlyGUID>
+                </Test>
+            </Module>
+            <Module name="pcdrsysinfobluetooth" guid="pcdrsysinfobluetooth" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfobluetooth.p5x</Path>
+                <SupportedCapabilities>BluetoothPort|BluetoothDevice</SupportedCapabilities>
+            </Module>
+            <Module name="Network Card Device Information" guid="pcdrsysinfocommunication" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfocommunication.p5x</Path>
+                <SupportedCapabilities>NetworkCard|NetworkCardTest|WirelessNetworkCardTest|ArcadyanNetworkTest|RealTekNetworkTest|Modem|MobileBroadbandInterface|NearFieldCommunicationDevice</SupportedCapabilities>
+            </Module>
+            <Module name="X86 CPU Information" guid="pcdrsysinfocpu_x86" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfocpu_x86.p5x</Path>
+                <SupportedCapabilities>CPU</SupportedCapabilities>
+            </Module>
+            <Module name="CSMI System Information" guid="pcdrsysinfocsmi" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfocsmi.p5x</Path>
+                <SupportedCapabilities>ATA|HardDrive|SMART|SATA|Optical</SupportedCapabilities>
+            </Module>
+            <Module name="Direct System Information" guid="pcdrsysinfodirect" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfodirect.p5x</Path>
+                <SupportedCapabilities>All</SupportedCapabilities>
+            </Module>
+            <Module name="Intel NIC System Information" guid="pcdrsysinfonal" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfonal.p5x</Path>
+                <SupportedCapabilities>PCI</SupportedCapabilities>
+            </Module>
+            <Module name="Input Device Information" guid="pcdrsysinfoperipheral" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfoperipheral.p5x</Path>
+                <SupportedCapabilities>Joystick|Mouse|Keyboard|KeyboardTest|Printer</SupportedCapabilities>
+            </Module>
+            <Module name="pcdrsysinfosmbios2" guid="pcdrsysinfosmbios2" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfosmbios2.p5x</Path>
+                <SupportedCapabilities>SMBIOS</SupportedCapabilities>
+            </Module>
+            <Module name="Software Information" guid="pcdrsysinfosoftware" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfosoftware.p5x</Path>
+                <SupportedCapabilities>Software|Other|ScreenSaver|VideoPort</SupportedCapabilities>
+            </Module>
+            <Module name="Storage Device Information" guid="pcdrsysinfostorage" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfostorage.p5x</Path>
+                <SupportedCapabilities>Optical|CDROM|CDR|CDRW|DVD|DVDRAM|DVDMINUSR|DVDMINUSRW|DVDMINUSRDL|DVDMINUSRWDL|DVDPLUSR|DVDPLUSRW|DVDPLUSRDL|DVDPLUSRWDL|HDDVDROM|HDDVDR|HDDVDRAM|SystemDrive|HardDrive|ATA|SMART|SCSI|SCSISBC|SCSIMMC|SCSISSC|IEEE1394|DrivePartition|TapeDrive|ZipDrive|LSDRIVE|USB|CardReader|BDR|BDRE|FloppyDrive|NVME|NVDIMM|SATA</SupportedCapabilities>
+            </Module>
+            <Module name="System Board Device Information" guid="pcdrsysinfosystemboard" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfosystemboard.p5x</Path>
+                <SupportedCapabilities>SystemBoard|Memory|System|MemoryChip|OnBoardDevice|BIOS|Port|Slot|SystemboardAdvancedTest|StandbyHibernate|CMOS|TouchScreen|ThermalZone|AmbientLight</SupportedCapabilities>
+            </Module>
+            <Module name="Video Capture Card Information" guid="pcdrsysinfovideocapture" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsysinfovideocapture.p5x</Path>
+                <SupportedCapabilities>VideoCapture|Camera</SupportedCapabilities>
+            </Module>
+            <Module name="System Board Test" guid="pcdrsystemboard" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrsystemboard.p5x</Path>
+                <SupportedCapabilities>SystemBoard|SystemboardAdvancedTest|TPM</SupportedCapabilities>
+                <Test name="RTC Rollover Test" enabled="false" index="276">
+                    <Description>Verifies the Real-Time Clock accurately performs date and time rollovers.</Description>
+                    <GUID>pcdrsystemboard_RTCRolloverTest</GUID>
+                    <ModuleGUID>pcdrsystemboard</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="motherboard">SystemBoard</SupportedCapability>
+                    <FriendlyGUID>SYSTEMBOARD RTCRolloverTest</FriendlyGUID>
+                </Test>
+                <Test name="RTC Accuracy Test" enabled="true" index="277">
+                    <Description>Verifies that the Real-Time Clock is accurately reporting time intervals.</Description>
+                    <GUID>pcdrsystemboard_RTCAccuracyTest</GUID>
+                    <ModuleGUID>pcdrsystemboard</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="motherboard">SystemBoard</SupportedCapability>
+                    <SupportedCapability icon="computer_diagnostics">SystemboardAdvancedTest</SupportedCapability>
+                    <FriendlyGUID>SYSTEMBOARD RTCAccuracyTest</FriendlyGUID>
+                    <Parameter name="Retries" type="UINT32">
+                        <Key>iRetries</Key>
+                        <Description>How many times to re-try</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>5</Value>
+                    </Parameter>
+                    <Parameter name="Duration in seconds" type="UINT32">
+                        <Key>iDurationInSeconds</Key>
+                        <Description>Duration in seconds</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>1</Value>
+                    </Parameter>
+                    <Parameter name="Percent tolerance" type="PERCENT">
+                        <Key>fPercentTolerance</Key>
+                        <Description>Tolerance percent</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>0.500000</Value>
+                    </Parameter>
+                </Test>
+                <Test name="TPM Self Test" enabled="false" index="278">
+                    <Description>This test requests that the Trusted Platform Module (TPM) perform a full diagnostic evaluation of its capabilities.</Description>
+                    <GUID>pcdrsystemboard_TPMSelfTest</GUID>
+                    <ModuleGUID>pcdrsystemboard</ModuleGUID>
+                    <Interactive>false</Interactive>
+                    <SupportedCapability icon="motherboard">TPM</SupportedCapability>
+                    <FriendlyGUID>SYSTEMBOARD TPMSelfTest</FriendlyGUID>
+                    <Parameter name="Timeout" type="UINT32">
+                        <Key>Timeout</Key>
+                        <Description>The timeout for the TPM self tests in seconds.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>30</Value>
+                    </Parameter>
+                </Test>
+            </Module>
+            <Module name="Touch Screen Test" guid="pcdrtouchscrn" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrtouchscrn.p5x</Path>
+                <SupportedCapabilities>TouchScreen</SupportedCapabilities>
+                <Test name="Touch Screen Calibration Test" enabled="true" index="279">
+                    <Description>Interactive test to verify a touch screen is accurately calibrated.</Description>
+                    <GUID>pcdrtouchscrn_TouchscreenCalibrationTest</GUID>
+                    <ModuleGUID>pcdrtouchscrn</ModuleGUID>
+                    <Interactive>true</Interactive>
+                    <SupportedCapability icon="touchscreen">TouchScreen</SupportedCapability>
+                    <FriendlyGUID>TOUCHSCRN TouchscreenCalibrationTest</FriendlyGUID>
+                    <Parameter name="Acceptable Error Percentage" type="UINT32">
+                        <Key>AcceptableErrorPct</Key>
+                        <Description>Determines Pass/Fail of Touchscreen Calibration test</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>5</Value>
+                    </Parameter>
+                    <Parameter name="Timeout Seconds" type="UINT32">
+                        <Key>TimeoutSeconds</Key>
+                        <Description>If this number of seconds is reached, the test will abort and return the TIMED OUT result.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>0</Value>
+                    </Parameter>
+                </Test>
+                <Test name="Touch Screen Coverage Test" enabled="true" index="280">
+                    <Description>Interactive test to verify all regions of the touch screen are functional.</Description>
+                    <GUID>pcdrtouchscrn_TouchscreenCoverageTest</GUID>
+                    <ModuleGUID>pcdrtouchscrn</ModuleGUID>
+                    <Interactive>true</Interactive>
+                    <SupportedCapability icon="touchscreen">TouchScreen</SupportedCapability>
+                    <FriendlyGUID>TOUCHSCRN TouchscreenCoverageTest</FriendlyGUID>
+                    <Parameter name="Background Image" type="STRING">
+                        <Key>BkgndImg</Key>
+                        <Description>Determines the tiled image behind the Coverage Test</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>.\resources\pcdrtouchscrn\CoverageTestImage.jpg</Value>
+                    </Parameter>
+                    <Parameter name="Cell Size" type="UINT32">
+                        <Key>CellSize</Key>
+                        <Description>Controls cell (block) size in Coverage Test</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>20</Value>
+                    </Parameter>
+                    <Parameter name="Timeout Seconds" type="UINT32">
+                        <Key>TimeoutSeconds</Key>
+                        <Description>If this number of seconds is reached, the test will abort and return the TIMED OUT result.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>0</Value>
+                    </Parameter>
+                </Test>
+                <Test name="Multi-touch Test" enabled="true" index="281">
+                    <Description>This test determines that multiple simultaneous touch points can be activated.</Description>
+                    <GUID>pcdrtouchscrn_MultitouchTest</GUID>
+                    <ModuleGUID>pcdrtouchscrn</ModuleGUID>
+                    <Interactive>true</Interactive>
+                    <SupportedCapability icon="touchscreen">TouchScreen</SupportedCapability>
+                    <FriendlyGUID>TOUCHSCRN MultitouchTest</FriendlyGUID>
+                    <Parameter name="Required Touches" type="UINT32">
+                        <Key>MaxRequiredTouches</Key>
+                        <Description>If 0, the test will require touches equal to the max supported touch points of the device. Otherwise, the specified number of touches will be required for a PASS result.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>0</Value>
+                    </Parameter>
+                    <Parameter name="Timeout Seconds" type="UINT32">
+                        <Key>TimeoutSeconds</Key>
+                        <Description>If this number of seconds is reached, the test will abort and return the TIMED OUT result.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>60</Value>
+                    </Parameter>
+                </Test>
+            </Module>
+            <Module name="Video Capture Device Test" guid="pcdrtvcard" version="6.5.000000001.00">
+                <BuildDate>00000000</BuildDate>
+                <Company>PC-Doctor, Inc.</Company>
+                <Path>C:\Program Files\Dell\SupportAssistAgent\PCD\SupportAssist\pcdrtvcard.p5x</Path>
+                <SupportedCapabilities>VideoCapture|VideoCaptureBaseFilter|AnalogTVTuner|AnalogFMRadioTuner|DigitalTVTuner</SupportedCapabilities>
+                <Test name="TV Signal Test" enabled="false" index="282">
+                    <Description>Verifies if an analog video signal is present from the tv tuner card.</Description>
+                    <GUID>pcdrtvcard_TVSignalTest</GUID>
+                    <ModuleGUID>pcdrtvcard</ModuleGUID>
+                    <Interactive>true</Interactive>
+                    <SupportedCapability icon="video_card">VideoCapture</SupportedCapability>
+                    <SupportedCapability icon="video_card">VideoCaptureBaseFilter</SupportedCapability>
+                    <SupportedCapability icon="video_card">AnalogTVTuner</SupportedCapability>
+                    <FriendlyGUID>TVCARD TVSignalTest</FriendlyGUID>
+                    <Parameter name="Prompt User for Country Code on First Run" type="BOOLEAN">
+                        <Key>AskCountryCode1</Key>
+                        <Description>Prompts the user for a country code on first run</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>false</Value>
+                    </Parameter>
+                    <Parameter name="Prompt User for Country Code on Second Run" type="BOOLEAN">
+                        <Key>AskCountryCode2</Key>
+                        <Description>Prompts the user for a country code on second run</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>false</Value>
+                    </Parameter>
+                    <Parameter name="Stop On Signal" type="BOOLEAN">
+                        <Key>StopOnSignal</Key>
+                        <Description>If true, specifies the test to halt once a channel with a signal is detected.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>true</Value>
+                    </Parameter>
+                    <Parameter name="Checks Per Channel" type="UINT32">
+                        <Key>ChecksPerChannel</Key>
+                        <Description>Specifies the number of times the test will check each channel for a signal.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>1</Value>
+                    </Parameter>
+                    <Parameter name="Check For TV Cable Message Box Timeout Value" type="UINT32">
+                        <Key>MsgBoxTimeout</Key>
+                        <Description>Specifies the amount of time (in seconds) a message box will remain active before timing out.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>0</Value>
+                    </Parameter>
+                    <Parameter name="Check TV Cable" type="BOOLEAN">
+                        <Key>CheckTVCable</Key>
+                        <Description>If true and the Signal Test fails, specifies the test to prompt the user to verify the TV cable is attached to the TV tuner card.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>true</Value>
+                    </Parameter>
+                    <Parameter name="Analog TV Signal Start Channel" type="UINT32">
+                        <Key>TVStartChannel</Key>
+                        <Description>Specifies the first TV channel to use for testing.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>2</Value>
+                    </Parameter>
+                    <Parameter name="Analog TV Signal End Channel" type="UINT32">
+                        <Key>TVEndChannel</Key>
+                        <Description>Specifies the last TV channel to use for testing.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>60</Value>
+                    </Parameter>
+                    <Parameter name="Touchscreen Factor" type="DOUBLE">
+                        <Key>TouchscreenFactor</Key>
+                        <Description>Controls the spacing of entries in the select country combo box</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>1.000000</Value>
+                    </Parameter>
+                    <Parameter name="Signal Type" type="STRING">
+                        <Key>SignalType</Key>
+                        <Description>Specifies the type of signal the capture card is reading.  This parameter supports the following values: CABLE, ANTENNA, or ALL.</Description>
+                        <ValueSource>SETTINGSFILE</ValueSource>
+                        <Value>ALL</Value>
+                    </Parameter>
+        
